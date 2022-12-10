@@ -51,8 +51,10 @@ let specailCharsCount = 0;
 
 const formEl = document.querySelector('#formInput')
 const passwordInputField = document.querySelector('#passwordInput')
+const resultEl = document.querySelector('#result')
 
 formEl.addEventListener('submit', e => {
+    e.preventDefault()
     passwordInput = passwordInputField.value
     console.log(passwordInput)   
     passwordCheck(passwordInput)
@@ -69,22 +71,26 @@ function passwordCheck() {
 console.log(`Found ${specailCharsCount} specialcharacters in ${passwordInput}`)
 
 if (passwordInput.length >= 6 && passwordCheck(passwordInput) >= 2) {
-	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst 2 specialtecken!`)
 	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst två specialtecken!`)
+    resultEl.innerHTML = ``
 } else if (passwordInput.length >= 8 && passwordCheck(passwordInput) >= 1) {
-	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 8 tecken varav minst 1 specialtecken!`)
 	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 8 tecken varav minst ett specialtecken!`)
+    resultEl.innerHTML = ``
 }
 else if (passwordInput.length >= 12 && passwordInput.includes('-') >= 1) {
-	// alert(`Ditt lösenord är ${passwordInput} \n✅ Uppfyller kraven på minst 12 tecken och minst 1 bindestreck!`)
 	console.log(`Ditt lösenord är ${passwordInput} \n✅ Uppfyller kraven på minst 12 tecken och minst ett bindestreck!`)
+    resultEl.innerHTML = ``
 }
 else if (passwordInput.length >= 16) {
-	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!`)
 	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!!`)
+    resultEl.innerHTML = ``
 } else {
-	// alert(`Ditt lösenord är: ${passwordInput} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
-	console.log(`Ditt lösenord är: ${passwordInput} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
+    resultEl.innerHTML = `<p class="alert alert-danger">Your password:<br> ${passwordInput}<br> does not meet the requirements!</p>`
 }
+
+})
+
+formEl.addEventListener('reset', () => {
+    resultEl.innerHTML = ''
 
 })
