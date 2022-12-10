@@ -50,33 +50,26 @@ const specialChars = [
 let specailCharsCount = 0;
 
 const formEl = document.querySelector('#formInput')
-const passwordInput = document.querySelector('#passwordInput')
+const passwordInputField = document.querySelector('#passwordInput')
 
 formEl.addEventListener('submit', e => {
-    e.preventDefault()
-    input = passwordInput.value
-    console.log('Password in inputfield: ',input)   
-    specialCharCheck(input)
-})
-    
-function specialCharCheck(input) {
-	for (i = 0; i < specialChars.length; i++) {
-		if (specialChars.includes(input[i])) {
-			specailCharsCount++
-		}
-	}
-    console.log(`Found ${specailCharsCount} specialcharacters in ${input}`)
-	return specailCharsCount
-}
-
-
-
+    passwordInput = passwordInputField.value
+    console.log(passwordInput)   
+    passwordCheck(passwordInput)
 
 
 function passwordCheck() {
+	for (i = 0; i < specialChars.length; i++) {
+		if (specialChars.includes(passwordInput[i])) {
+			specailCharsCount++
+		}
+	}
+	return specailCharsCount
+}
+console.log(`Found ${specailCharsCount} specialcharacters in ${passwordInput}`)
 
-    if (passwordInput.length >= 6 && passwordCheck(passwordInput) >= 2) {
-        // alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst 2 specialtecken!`)
+if (passwordInput.length >= 6 && passwordCheck(passwordInput) >= 2) {
+	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst 2 specialtecken!`)
 	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst två specialtecken!`)
 } else if (passwordInput.length >= 8 && passwordCheck(passwordInput) >= 1) {
 	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 8 tecken varav minst 1 specialtecken!`)
@@ -87,10 +80,11 @@ else if (passwordInput.length >= 12 && passwordInput.includes('-') >= 1) {
 	console.log(`Ditt lösenord är ${passwordInput} \n✅ Uppfyller kraven på minst 12 tecken och minst ett bindestreck!`)
 }
 else if (passwordInput.length >= 16) {
-    // alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!`)
+	// alert(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!`)
 	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!!`)
 } else {
-    // alert(`Ditt lösenord är: ${passwordInput} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
-	console.log(`Ditt lösenord är: ${passwordInput.value} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
+	// alert(`Ditt lösenord är: ${passwordInput} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
+	console.log(`Ditt lösenord är: ${passwordInput} \n❌ och uppfyller tyvärr inte lösenordskraven!`)
 }
-}
+
+})
