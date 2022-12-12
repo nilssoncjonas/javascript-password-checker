@@ -70,26 +70,21 @@ function passwordCheck() {
 }
 console.log(`Found ${specailCharsCount} specialcharacters in ${passwordInput}`)
 
-if (passwordInput.length >= 8 && passwordCheck(passwordInput) >= 1) {
-	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kraven på minst 6 tecken varav minst två specialtecken!`)
-    resultEl.innerHTML = `<p class="alert alert-success">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>8 characters of which at least 1 specialcharacter!</p> `
-} else if (passwordInput.length >= 6 && passwordCheck(passwordInput) >= 2) {
-    resultEl.innerHTML = `<p class="alert alert-success">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>6 characters of which at least 2 specialcharacter!</p>`
-}
-else if (passwordInput.length >= 12 && passwordInput.includes('-') >= 1) {
-	console.log(`Ditt lösenord är ${passwordInput} \n✅ Uppfyller kraven på minst 12 tecken och minst ett bindestreck!`)
-    resultEl.innerHTML = `<p class="alert alert-primary">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>12 characters and must include a hyphen!</p>`
-}
-else if (passwordInput.length >= 16) {
-	console.log(`Ditt lösenord är: ${passwordInput} \n✅ Uppfyller kravet på minst 16 tecken!!`)
-    resultEl.innerHTML = `<p class="alert alert-warning">Your password:<br> ${passwordInput}<br>meets the requirements of at least<br>16 characters!</p> `
-} else {
-    resultEl.innerHTML = `<p class="alert alert-danger">Your password:<br> ${passwordInput}<br> does not meet the requirements!</p>`
-}
-
+    if (passwordInput.length >= 8 && passwordCheck(passwordInput) >= 1) {
+        resultEl.innerHTML = `<p class="alert alert-success">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>8 characters of which at least 1 specialcharacter!</p> `
+    } else if (passwordInput.length >= 6 && passwordCheck(passwordInput) >= 2) {
+        resultEl.innerHTML = `<p class="alert alert-success">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>6 characters of which at least 2 specialcharacter!</p>`
+    }
+    else if (passwordInput.length >= 12 && passwordInput.includes('-') >= 1) {
+        resultEl.innerHTML = `<p class="alert alert-primary">Your password:<br> ${passwordInput}<br>meets the requirements of at least <br>12 characters and must include a hyphen!</p>`
+    }
+    else if (passwordInput.length >= 16) {
+        resultEl.innerHTML = `<p class="alert alert-warning">Your password:<br> ${passwordInput}<br>meets the requirements of at least<br>16 characters!</p> `
+    } else {
+        resultEl.innerHTML = `<p class="alert alert-danger">Your password:<br> ${passwordInput}<br> does not meet the requirements!</p>`
+    }
 })
 
 formEl.addEventListener('reset', () => {
     resultEl.innerHTML = ''
-
 })
